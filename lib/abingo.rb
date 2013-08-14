@@ -2,13 +2,13 @@
 #Unless you're fiddling with implementation details, it is the only one you need worry about.
 
 #Usage of ABingo, including practical hints, is covered at http://www.bingocardcreator.com/abingo
+require "abingo/version"
+require "abingo/conversion_rate"
+require "abingo/alternative"
+require "abingo/statistics"
+require "abingo/experiment"
 
 class Abingo
-
-  @@VERSION = "1.1.0"
-  @@MAJOR_VERSION = "1.1"
-  cattr_reader :VERSION
-  cattr_reader :MAJOR_VERSION
 
   #Not strictly necessary, but eh, as long as I'm here.
   cattr_accessor :salt

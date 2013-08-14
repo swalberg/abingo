@@ -2,10 +2,12 @@ require 'test_helper'
 
 class AbingoTest < ActiveSupport::TestCase
 
-  #Wipes cache, D/B prior to doing a test run.
-  Abingo.cache.clear
-  Abingo::Experiment.delete_all
-  Abingo::Alternative.delete_all
+  def setup
+    #Wipes cache, D/B prior to doing a test run.
+    Abingo.cache.clear
+    Abingo::Experiment.delete_all
+    Abingo::Alternative.delete_all
+  end
 
   test "identity automatically assigned" do
     assert Abingo.identity != nil
@@ -141,7 +143,7 @@ class AbingoTest < ActiveSupport::TestCase
     test_name = "are_you_a_human"
     Abingo.test(test_name, %w{does_not matter})
 
-    assert_false Abingo.is_human?, "Identity not marked as human yet."
+    assert_equal false,  Abingo.is_human?, "Identity not marked as human yet."
 
     ex = Abingo::Experiment.find_by_test_name(test_name)
     Abingo.bingo!(test_name)
